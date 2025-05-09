@@ -8,17 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
+    let messages = [
+        "Dog",
+        "Cat",
+        "Elephant",
+        "Monkey",
+        "Mouse"
+    ]
+    
+    @State private var messageIndex = 0
+
+    var message: String {
+        messages[messageIndex]
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Text(message)
+                    .font(.title)
+                    .foregroundColor(.primary)
+                    .padding()
+                    .animation(.easeInOut, value: messageIndex)
+
+                Button("Change Animal") {
+                    messageIndex = (messageIndex + 1) % messages.count
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.blue, lineWidth: 2)
+                )
+                .padding()
+            }
+            .navigationTitle("Animals")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(.systemBackground))
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
