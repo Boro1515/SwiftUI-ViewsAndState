@@ -19,3 +19,4 @@ The app displays an animal name from a list. Tapping the styled button cycles th
 
 This is part of my personal SwiftUI learning series, where I demonstrate modern UI development practices in small, clean examples.
 
+![screenshot](screenshot.png)
